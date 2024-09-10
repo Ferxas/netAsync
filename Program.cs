@@ -1,6 +1,12 @@
 var builder = WebApplication.CreateBuilder(args);
-
 // Add services to the container.
+
+// for every http request
+builder.Services.AddScoped<IMyService, MyService>();
+// singleton (recycle)
+builder.Services.AddSingleton<IMyService, MyService>();
+// transient
+builder.Services.AddTransient<IMyService, MyService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
